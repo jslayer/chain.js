@@ -45,7 +45,7 @@ Chain.prototype.run = function(){
 };
 
 Chain.prototype._timeout = function(){
-    console.log('TIMEOUT', this.name);
+    console.log('TIMEOUT');
 };
 
 Chain.prototype._run = function(){
@@ -107,13 +107,9 @@ var c1 = Chain()
     .then(app1.a1)
     .then(app1.b1);
 
-c1.name = 'name = 1';
-
 var c2 = Chain()
     .then(c1)
     .then(app1.a2)
     .then(app1.b2);
-
-c2.name = 'name = 2';
 
 c2.run();
