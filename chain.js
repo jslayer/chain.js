@@ -61,7 +61,7 @@ Chain.prototype._run = function(){
 
     if (typeof fn == 'function') {
         try {
-            fn.call(null, this._run.bind(this), this._error.bind(this), this.data);
+            fn.call(this, this._run.bind(this), this._error.bind(this), this.data);
         } catch (e) {
             console.log('CATCH', e);
             clearTimeout(this._timer);
@@ -83,7 +83,7 @@ Chain.prototype._run = function(){
 };
 
 /*********************/
-
+/*
 var app1 = {
     a1 : function(r){
         console.log('a1');
@@ -112,4 +112,4 @@ var c2 = Chain()
     .then(app1.a2)
     .then(app1.b2);
 
-c2.run();
+c2.run();*/

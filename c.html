@@ -1,1 +1,60 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="a" style="color: #fff;">Hello</div>
+
 <script src="chain.js"></script>
+<script src="http://yui.yahooapis.com/3.14.1/build/yui/yui-min.js"></script>
+
+<script>
+    var app = {
+        a : function(r){
+            this.data.node.transition({
+                backgroundColor : '#ff4444',
+                easing          : 'ease-in',
+                duration        : 1.5
+            }, r);
+        },
+        b : function(r){
+            this.data.node.transition({
+                backgroundColor : '#007F00',
+                easing          : 'linear',
+                duration        : 1.5
+            }, r);
+        },
+        c : function(r){
+            this.data.node.transition({
+                backgroundColor : '#0000ff',
+                easing          : 'linear',
+                duration        : 1.5
+            }, r);
+        },
+        d : function(r){
+            this.data.node.transition({
+                backgroundColor : '#000000',
+                easing          : 'linear',
+                duration        : 1.5
+            }, r);
+        }
+    };
+
+    YUI().use('transition', 'node', function(Y){
+        var ops = { data : { node : Y.one('#a') }};
+
+        var chain = Chain(ops)
+            .then(
+                Chain(ops)
+                    .then(app.a)
+                    .then(app.b)
+            )
+            .then(app.c)
+            .then(app.d).run();
+    });
+</script>
+</body>
+</html>
