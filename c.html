@@ -44,7 +44,11 @@
     };
 
     YUI().use('transition', 'node', function(Y){
-        var ops = { data : { node : Y.one('#a') }};
+        var ops = {
+            data : {
+                node : Y.one('#a')
+            }
+        };
 
         var chain = Chain(ops)
             .then(
